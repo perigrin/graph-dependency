@@ -24,12 +24,12 @@ my $rc = `wget '$url' -o /tmp/wget.log -O tmp/index.html`;
 # /author/DSKOLL/IO-stringy-2.110/lib/IO/Scalar.pm"><b>IO::Scalar</b>
 
 my $m2 = $module; $m2 =~ s/-/::/g;
-$rc = `grep 'author.*$m2' tmp/index.html`;
+$rc = `grep '<b>$m2</b>' tmp/index.html`;
 
 #print STDERR "$rc\n";
 
 # try direct
-$rc =~ /\/author\/(\w+)\/(.*?)\/.*$m2</; my $author = $1;
+$rc =~ /~(\w+)\/(.*?)\/.*$m2</; my $author = $1;
 my $m = _replace($module,$2);
 
 if (!defined $author)
